@@ -1,23 +1,44 @@
-import React, { Suspense } from "react";
-import ReactDOM from "react-dom";
+import React from "react";
+import ReactDOM from "react-dom/client";
+import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
 
-import "assets/css/bootstrap.min.css";
-import "assets/scss/now-ui-kit.scss?v=1.5.0";
-import "assets/demo/demo.css?v=1.5.0";
-import "assets/demo/nucleo-icons-page-styles.css?v=1.5.0";
+import "assets/vendor/nucleo/css/nucleo.css";
+import "assets/vendor/font-awesome/css/font-awesome.min.css";
+import "assets/scss/argon-design-system-react.scss?v1.1.0";
 
-import App from "./App";
-import { HashRouter } from "react-router-dom";
-import Loader from "./layouts/loader/Loader";
+import Index from "views/Index.js";
+import Landing from "views/examples/Landing.js";
+import Login from "views/examples/Login.js";
+import Profile from "views/examples/Profile.js";
+import Register from "views/examples/Register.js";
 
-ReactDOM.render(
-    <Suspense fallback={<Loader />}>
-        <HashRouter>
-            <App />
-        </HashRouter>
-    </Suspense>,
+const root = ReactDOM.createRoot(document.getElementById("root"));
 
-    document.getElementById("root")
+root.render(
+  <BrowserRouter>
+    <Switch>
+      <Route path="/" exact render={(props) => <Index {...props} />} />
+      <Route
+        path="/landing-page"
+        exact
+        render={(props) => <Landing {...props} />}
+      />
+      <Route
+        path="/login-page"
+        exact
+        render={(props) => <Login {...props} />}
+      />
+      <Route
+        path="/profile-page"
+        exact
+        render={(props) => <Profile {...props} />}
+      />
+      <Route
+        path="/register-page"
+        exact
+        render={(props) => <Register {...props} />}
+      />
+      <Redirect to="/" />
+    </Switch>
+  </BrowserRouter>
 );
-
-
