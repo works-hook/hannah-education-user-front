@@ -8,7 +8,7 @@ import Navbar from "components/Navbars/TopNavbar.js";
 import CardsFooter from "components/Footers/CardsFooter.js";
 
 // index page sections
-import Hero from "./IndexSections/Hero.js";
+import Banner from "./main/Banner";
 import Buttons from "./IndexSections/Buttons.js";
 import Inputs from "./IndexSections/Inputs.js";
 import CustomControls from "./IndexSections/CustomControls.js";
@@ -35,7 +35,7 @@ class Index extends React.Component {
       <>
         <Navbar />
         <main ref="main">
-          <Hero />
+          <Banner />
           <Buttons />
           <Inputs />
           <section className="section">

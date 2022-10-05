@@ -18,7 +18,7 @@ const TopNavbar = () => {
     return (
       <>
         <Navbar
-            className="navbar-horizontal navbar-dark bg-primary ct-navbar"
+            className="navbar-horizontal navbar-dark bg-default ct-navbar"
             expand="lg"
         >
           <Container>
@@ -26,18 +26,18 @@ const TopNavbar = () => {
               Hannah Education
             </NavbarBrand>
             <button
-                aria-controls="navbar-primary"
+                aria-controls="navbar-default"
                 aria-expanded={false}
                 aria-label="Toggle navigation"
                 className="navbar-toggler"
-                data-target="#navbar-primary"
+                data-target="#navbar-default"
                 data-toggle="collapse"
-                id="navbar-primary"
+                id="navbar-default"
                 type="button"
             >
               <span className="navbar-toggler-icon" />
             </button>
-            <UncontrolledCollapse navbar toggler="#navbar-primary">
+            <UncontrolledCollapse navbar toggler="#navbar-default">
               <div className="navbar-collapse-header">
                 <Row>
                   <Col className="collapse-brand" xs="6">
@@ -50,13 +50,13 @@ const TopNavbar = () => {
                   </Col>
                   <Col className="collapse-close" xs="6">
                     <button
-                        aria-controls="navbar-primary"
+                        aria-controls="navbar-default"
                         aria-expanded={false}
                         aria-label="Toggle navigation"
                         className="navbar-toggler"
-                        data-target="#navbar-primary"
+                        data-target="#navbar-default"
                         data-toggle="collapse"
-                        id="navbar-primary"
+                        id="navbar-default"
                         type="button"
                     >
                       <span />
@@ -82,14 +82,14 @@ const TopNavbar = () => {
                       aria-haspopup={true}
                       data-toggle="dropdown"
                       href="#pablo"
-                      id="navbar-primary_dropdown_1"
+                      id="navbar-default_dropdown_1"
                       onClick={e => e.preventDefault()}
                       role="button"
                   >
                     Settings
                   </NavLink>
                   <DropdownMenu
-                      aria-labelledby="navbar-primary_dropdown_1"
+                      aria-labelledby="navbar-default_dropdown_1"
                       right
                   >
                     <DropdownItem
