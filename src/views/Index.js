@@ -1,16 +1,13 @@
 import React from "react";
 
-// reactstrap components
 import { Container, Row } from "reactstrap";
 
-// core components
 import Navbar from "components/Navbars/TopNavbar.js";
 import CardsFooter from "components/Footers/CardsFooter.js";
 
-// index page sections
-import Banner from "./main/Banner";
-import Buttons from "./IndexSections/Buttons.js";
-import Inputs from "./IndexSections/Inputs.js";
+import Banner from "./main/Banner.js";
+import Subject from "./main/Subject.js";
+import Inputs from "./main/TopLecturesTaken.js";
 import CustomControls from "./IndexSections/CustomControls.js";
 import Menus from "./IndexSections/Menus.js";
 import Navbars from "./IndexSections/Navbars.js";
@@ -36,7 +33,7 @@ class Index extends React.Component {
         <Navbar />
         <main ref="main">
           <Banner />
-          <Buttons />
+          <Subject />
           <Inputs />
           <section className="section">
             <Container>
