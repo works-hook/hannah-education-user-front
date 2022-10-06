@@ -53,13 +53,21 @@ h3, h6, p {
 
 .lecture-card-img {
     width: 100%;
-    height: 190px;
+    height: 130px;
+}
+
+.card-body {
+    padding: 1rem;
 }
 
 .badge {
     text-transform: none;
 }
 
+.custom-swiper {
+    height: 280px;
+    padding-top: 0.5rem;
+}
 
 .badge-yellow {
     color: #fff;

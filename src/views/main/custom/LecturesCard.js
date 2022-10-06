@@ -12,10 +12,10 @@ const LecturesCard = ({title, img, tags}) => {
                 </h6>
                 <img
                     alt={ img }
-                    className="img-fluid rounded shadow lecture-card-img"
+                    className="img-fluid rounded lecture-card-img"
                     src={ img }
                 />
-                <div className="mt-3">
+                <div className="mt-2">
                     { tags.map((tag, index) => {
                         return (
                             <Badge key={ index } color={ tag.color } pill className="mr-1">
