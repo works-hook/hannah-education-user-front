@@ -82,7 +82,7 @@ const Banner = (args) => {
                     activeIndex={activeIndex}
                     next={next}
                     previous={previous}
-                    {...args}
+                    interval={3000}
                 >
                     <CarouselIndicators
                         items={items}

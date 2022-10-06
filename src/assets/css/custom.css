@@ -83,3 +83,11 @@ a.badge-yellow.focus {
     outline: 0;
     box-shadow: 0 0 0 0 rgba(209, 179, 39, 0.5);
 }
+
+.carousel-control-next {
+    margin-right: 1.5rem;
+}
+
+.carousel-control-prev {
+    margin-left: 1.5rem;
+}
