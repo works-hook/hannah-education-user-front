@@ -2,7 +2,7 @@ import {
   Card, CardBody, Badge
 } from "reactstrap";
 
-const LecturesCard = ({title, img, tags}) => {
+const LectureCard = ({title, img, tags}) => {
 
   return (<>
     <Card className="card-lift--hover shadow border-0 mb-3">
@@ -29,4 +29,4 @@ const LecturesCard = ({title, img, tags}) => {
   </>);
 }
 
-export default LecturesCard;
+export default LectureCard;

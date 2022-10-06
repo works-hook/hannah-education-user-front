@@ -38,7 +38,7 @@ import {
 
 // core components
 import DemoNavbar from "components/Navbars/TopNavbar.js";
-import CardsFooter from "components/Footers/CardsFooter.js";
+import MainFooter from "components/Footers/MainFooter.js";
 
 // index page sections
 import Download from "../IndexSections/Download.js";
@@ -864,7 +864,7 @@ class Landing extends React.Component {
           </section>
           <Download />
         </main>
-        <CardsFooter />
+        <MainFooter />
       </>
     );
   }

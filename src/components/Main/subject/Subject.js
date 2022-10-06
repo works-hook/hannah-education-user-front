@@ -1,10 +1,10 @@
 import {Row, Col, Container} from "reactstrap";
-import "../../assets/css/custom.css";
+import "../../../assets/css/custom.css";
 
 const subjectData = [
   {
     id: 1,
-    title: "java",
+    title: "Java",
     src: require("assets/img/theme/다운로드.png")
   },
   {

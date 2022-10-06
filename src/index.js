@@ -19,7 +19,10 @@ root.render(
   <BrowserRouter>
     <Navbar />
     <Switch>
-      <Route path="/" exact render={(props) => <Index {...props} />} />
+      <Route
+        path="/"
+        render={(props) => <Index {...props} />}
+      />
       <Route
         path="/landing-page"
         exact

@@ -1,28 +1,8 @@
-import React, {useEffect} from "react";
-
-import {Container, Row} from "reactstrap";
-
-import CardsFooter from "components/Footers/CardsFooter.js";
-
-import Banner from "./main/Banner.js";
-import Subject from "./main/Subject.js";
-import TopLecturesTaken from "./main/TopLecturesTaken.js";
-import CustomControls from "./IndexSections/CustomControls.js";
-import Navbars from "./IndexSections/Navbars.js";
-import Tabs from "./IndexSections/Tabs.js";
-import Progress from "./IndexSections/Progress.js";
-import Pagination from "./IndexSections/Pagination.js";
-import Pills from "./IndexSections/Pills.js";
-import Labels from "./IndexSections/Labels.js";
-import Alerts from "./IndexSections/Alerts.js";
-import Typography from "./IndexSections/Typography.js";
-import Modals from "./IndexSections/Modals.js";
-import Datepicker from "./IndexSections/Datepicker.js";
-import TooltipPopover from "./IndexSections/TooltipPopover.js";
-import Carousel from "./IndexSections/Carousel.js";
-import Icons from "./IndexSections/Icons.js";
-import Login from "./IndexSections/Login.js";
-import Download from "./IndexSections/Download.js";
+import MainFooter from "components/Footers/MainFooter.js";
+import Banner from "../components/Main/banner/Banner.js";
+import Subject from "../components/Main/subject/Subject.js";
+import LectureCards, {CardType} from "../components/Main/lecture/LectureCards.js";
+import TeacherCards from "../components/Main/teacher/TeacherCards";
 
 const Index = (props) => {
   const {customRef} = props;
@@ -32,33 +12,11 @@ const Index = (props) => {
       <main ref={customRef}>
         <Banner/>
         <Subject/>
-        <TopLecturesTaken/>
-        <CustomControls/>
-        <Navbars/>
-        <section className="section section-components">
-          <Container>
-            <Tabs/>
-            <Row className="row-grid justify-content-between align-items-center mt-lg">
-              <Progress/>
-              <Pagination/>
-            </Row>
-            <Row className="row-grid justify-content-between">
-              <Pills/>
-              <Labels/>
-            </Row>
-            <Alerts/>
-            <Typography/>
-            <Modals/>
-            <Datepicker/>
-            <TooltipPopover/>
-          </Container>
-        </section>
-        <Carousel/>
-        <Icons/>
-        <Login/>
-        <Download/>
+        <LectureCards title={'가장 많이 수강한 강의들🌟'} type={CardType.COMPLETED}/>
+        <TeacherCards title={'오늘의 강사님🎖'} type={CardType.COMPLETED} />
+        <LectureCards title={'인기가 가장 많은 강의들💕'} type={CardType.LIKE}/>
       </main>
-      <CardsFooter/>
+      <MainFooter/>
     </>
   );
 }
