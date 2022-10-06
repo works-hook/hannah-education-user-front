@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
+import {BrowserRouter, Route, Switch, Redirect} from "react-router-dom";
 
 import "assets/vendor/nucleo/css/nucleo.css";
 import "assets/vendor/font-awesome/css/font-awesome.min.css";
@@ -11,11 +11,13 @@ import Landing from "views/examples/Landing.js";
 import Login from "views/examples/Login.js";
 import Profile from "views/examples/Profile.js";
 import Register from "views/examples/Register.js";
+import Navbar from "./components/Navbars/TopNavbar";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
 root.render(
   <BrowserRouter>
+    <Navbar />
     <Switch>
       <Route path="/" exact render={(props) => <Index {...props} />} />
       <Route
@@ -38,7 +40,7 @@ root.render(
         exact
         render={(props) => <Register {...props} />}
       />
-      <Redirect to="/" />
+      <Redirect to="/"/>
     </Switch>
   </BrowserRouter>
 );
