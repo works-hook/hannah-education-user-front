@@ -1,11 +1,11 @@
 {
-  "name": "argon-design-system-react",
+  "name": "hannah-education-user-front",
   "version": "1.1.1",
-  "description": "React version of Argon Design System by Creative Tim",
+  "description": "Backend Developer Hannah",
   "main": "index.js",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/creativetimofficial/argon-design-system-react.git"
+    "url": "git+https://github.com/works-hook/hannah-education-user-front.git"
   },
   "keywords": [
     "react",
@@ -22,18 +22,19 @@
     "argon-design-system-react",
     "design-system-react"
   ],
-  "author": "Creative Tim",
+  "author": "Backend Developer Hannah",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/creativetimofficial/argon-design-system-react/issues"
+    "url": "https://github.com/HongChaeMin"
   },
-  "homepage": "https://demos.creative-tim.com/argon-design-system-react/",
+  "homepage": "https://hongchaemin.github.io",
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build && gulp licenses",
+    "build": "react-scripts build",
     "test": "react-scripts test",
+    "deploy": "gh-pages -d build",
     "eject": "react-scripts eject",
-    "install:clean": "rm -rf node_modules/ && rm -rf package-lock.json && npm install && npm start",
+    "install:clean": "rm -rf node_modules/ && rm -rf yanr.lock && yarn install",
     "compile-sass": "sass src/assets/scss/argon-design-system-react.scss src/assets/css/argon-design-system-react.css",
     "minify-sass": "sass src/assets/scss/argon-design-system-react.scss src/assets/css/argon-design-system-react.min.css --style compressed"
   },
@@ -47,8 +48,10 @@
     "not op_mini all"
   ],
   "dependencies": {
+    "assets": "^3.0.1",
     "bootstrap": "4.3.1",
     "classnames": "2.3.1",
+    "gh-pages": "^4.0.0",
     "headroom.js": "0.12.0",
     "moment": "2.29.4",
     "nouislider": "14.1.1",

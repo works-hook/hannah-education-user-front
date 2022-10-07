@@ -1,5 +1,5 @@
 import {
-  Button, Card, CardImg,
+  Card, CardImg,
   Col, Container,
   Row
 } from "reactstrap";
@@ -7,7 +7,6 @@ import "swiper/css";
 import "swiper/css/pagination";
 import "../../../assets/css/custom.css";
 import teacher1 from "../../../assets/img/theme/team-1-800x800.jpg";
-import teacher2 from "../../../assets/img/theme/team-2-800x800.jpg";
 import teacher3 from "../../../assets/img/theme/team-3-800x800.jpg";
 import teacher4 from "../../../assets/img/theme/team-4-800x800.jpg";
 import teacher5 from "../../../assets/img/theme/KakaoTalk_20221006_135710459.jpg";

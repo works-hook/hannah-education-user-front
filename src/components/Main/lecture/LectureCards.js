@@ -246,6 +246,7 @@ const LectureCards = ({title, type}) => {
       ]
     },
   ];
+  const slidesPerView = Math.floor(window.outerWidth / 285 - 1);
 
   return (<>
     <Container className="my-6">
@@ -254,14 +255,9 @@ const LectureCards = ({title, type}) => {
         <Swiper
           modules={[Pagination, Autoplay]}
           spaceBetween={30}
-          slidesPerView={4}
+          slidesPerView={slidesPerView}
           pagination={{clickable: true}}
           autoplay={{delay: 2000}}
-          breakpoints={{
-            1700: {
-              slidesPerView: 5,
-            },
-          }}
         >
           {lectureData.map((data) => {
             return (
