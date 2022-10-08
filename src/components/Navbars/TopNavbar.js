@@ -10,8 +10,6 @@ import {
   NavLink,
   Nav,
   Container,
-  Row,
-  Col,
 } from "reactstrap";
 
 const TopNavbar = () => {
@@ -22,10 +20,11 @@ const TopNavbar = () => {
             expand="lg"
         >
           <Container>
-            <NavbarBrand href="#pablo" onClick={e => e.preventDefault()}>
-              Hannah Education
-            </NavbarBrand>
-            <button
+            <Link to={"/"} className="text-white">
+              <NavbarBrand>
+                Hannah Education
+              </NavbarBrand>
+              <button
                 aria-controls="navbar-default"
                 aria-expanded={false}
                 aria-label="Toggle navigation"
@@ -34,42 +33,18 @@ const TopNavbar = () => {
                 data-toggle="collapse"
                 id="navbar-default"
                 type="button"
-            >
-              <span className="navbar-toggler-icon" />
-            </button>
+              >
+                <span className="navbar-toggler-icon" />
+              </button>
+            </Link>
             <UncontrolledCollapse navbar toggler="#navbar-default">
-              <div className="navbar-collapse-header">
-                <Row>
-                  <Col className="collapse-brand" xs="6">
-                    <Link to="/">
-                      <img
-                          alt="..."
-                          src={require("assets/img/brand/blue.png")}
-                      />
-                    </Link>
-                  </Col>
-                  <Col className="collapse-close" xs="6">
-                    <button
-                        aria-controls="navbar-default"
-                        aria-expanded={false}
-                        aria-label="Toggle navigation"
-                        className="navbar-toggler"
-                        data-target="#navbar-default"
-                        data-toggle="collapse"
-                        id="navbar-default"
-                        type="button"
-                    >
-                      <span />
-                      <span />
-                    </button>
-                  </Col>
-                </Row>
-              </div>
               <Nav className="ml-lg-auto" navbar>
                 <NavItem>
-                  <NavLink href="#pablo" onClick={e => e.preventDefault()}>
-                    Discover <span className="sr-only">(current)</span>
-                  </NavLink>
+                  <Link to={"/lectures"} className="text-white">
+                    <NavLink>
+                        Lecture
+                    </NavLink>
+                  </Link>
                 </NavItem>
                 <NavItem>
                   <NavLink href="#pablo" onClick={e => e.preventDefault()}>

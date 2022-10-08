@@ -6,7 +6,7 @@ import {Autoplay, Pagination} from "swiper";
 import "swiper/css";
 import "swiper/css/pagination";
 import "../../../assets/css/custom.css";
-import LectureCard from "./LectureCard";
+import LectureCard from "../../Lecture/LectureCard";
 
 // custom enum
 const CardType = {
@@ -246,7 +246,21 @@ const LectureCards = ({title, type}) => {
       ]
     },
   ];
-  const slidesPerView = Math.floor(window.outerWidth / 285 - 1);
+
+  const breakpoints = {
+    1400: {
+      slidesPerView: 4,
+    },
+    1700: {
+      slidesPerView: 5,
+    },
+    1000: {
+      slidesPerView: 3,
+    },
+    600: {
+      slidesPerView: 2,
+    },
+  };
 
   return (<>
     <Container className="my-6">
@@ -255,14 +269,16 @@ const LectureCards = ({title, type}) => {
         <Swiper
           modules={[Pagination, Autoplay]}
           spaceBetween={30}
-          slidesPerView={slidesPerView}
+          slidesPerView={1}
+          breakpoints={breakpoints}
           pagination={{clickable: true}}
-          autoplay={{delay: 2000}}
+          autoplay={{delay: 5000}}
         >
           {lectureData.map((data) => {
             return (
               <SwiperSlide key={data.lectureId}>
                 <LectureCard
+                  className=""
                   key={data.lectureId}
                   title={data.title}
                   img={data.img}

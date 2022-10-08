@@ -43,10 +43,10 @@ const TeacherCards = () => {
   return <>
     <Container className="pt-3">
       <h3 className="cards-header">오늘의 강사님🎖</h3>
-      <Row className="mt-4 d-flex justify-content-between">
+      <Row className="mt-4">
         {teacherData.map((data) => {
           return <>
-            <Col className="p-1 mx-3">
+            <Col className="p-1 mx-3" key={data}>
               <Card className="bg-default shadow border-0 h-100">
                 <CardImg
                   alt={data.img}

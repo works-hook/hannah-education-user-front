@@ -56,6 +56,10 @@ h3, h6, p {
     height: 150px;
 }
 
+.card {
+    height: 95%;
+}
+
 .card-body {
     padding: 1rem;
 }
@@ -117,4 +121,18 @@ blockquote {
 
 .w-90 {
     width: 90%;
+}
+
+.text-default {
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.card-badge {
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.lecture-container {
+    margin-top: -15rem;
 }
