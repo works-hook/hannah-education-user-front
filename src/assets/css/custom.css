@@ -9,6 +9,12 @@
     padding-bottom: 16rem;
 }
 
+.index-section {
+    padding-top: 0 !important;
+    padding-bottom: 16rem;
+    z-index: -1;
+}
+
 .minus-mt-25 {
     margin-top: -11rem;
 }
@@ -135,4 +141,17 @@ blockquote {
 
 .lecture-container {
     margin-top: -15rem;
+}
+
+.card-width {
+    width: 280px;
+    margin: 1.25rem;
+}
+
+.pointer {
+    cursor: pointer;
+}
+
+.pointer > .badge:hover {
+    background: #b0b5cc;
 }

@@ -40,11 +40,9 @@ const TopNavbar = () => {
             <UncontrolledCollapse navbar toggler="#navbar-default">
               <Nav className="ml-lg-auto" navbar>
                 <NavItem>
-                  <Link to={"/lectures"} className="text-white">
-                    <NavLink>
+                    <NavLink href={"/lectures"}>
                         Lecture
                     </NavLink>
-                  </Link>
                 </NavItem>
                 <NavItem>
                   <NavLink href="#pablo" onClick={e => e.preventDefault()}>

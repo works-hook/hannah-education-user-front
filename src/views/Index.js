@@ -1,4 +1,3 @@
-import MainFooter from "components/Footers/MainFooter.js";
 import Banner from "../components/Main/banner/Banner.js";
 import Subject from "../components/Main/subject/Subject.js";
 import LectureCards, {CardType} from "../components/Main/lecture/LectureCards.js";
@@ -16,7 +15,6 @@ const Index = (props) => {
         <TeacherCards title={'오늘의 강사님🎖'} type={CardType.COMPLETED} />
         <LectureCards title={'인기가 가장 많은 강의들💕'} type={CardType.LIKE}/>
       </main>
-      <MainFooter/>
     </>
   );
 }

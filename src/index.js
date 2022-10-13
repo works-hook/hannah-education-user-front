@@ -13,6 +13,7 @@ import Login from "views/examples/Login.js";
 import Profile from "views/examples/Profile.js";
 import Register from "views/examples/Register.js";
 import Navbar from "./components/Navbars/TopNavbar";
+import MainFooter from "./components/Footers/MainFooter";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
@@ -57,5 +58,6 @@ root.render(
       />
       <Redirect to="/"/>
     </Switch>
+    <MainFooter/>
   </BrowserRouter>
 );

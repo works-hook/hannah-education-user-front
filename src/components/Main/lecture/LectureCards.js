@@ -278,7 +278,6 @@ const LectureCards = ({title, type}) => {
             return (
               <SwiperSlide key={data.lectureId}>
                 <LectureCard
-                  className=""
                   key={data.lectureId}
                   title={data.title}
                   img={data.img}
