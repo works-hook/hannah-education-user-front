@@ -19,7 +19,7 @@
     margin-top: -11rem;
 }
 
-h1, h3, h6, p {
+h1, h3, h6, p, h2 {
     color: white;
     font-family: 'Noto Sans KR', sans-serif;
 }
@@ -197,4 +197,9 @@ blockquote {
 .lectures-link {
     display: block;
     height: 100%;
+}
+
+.teacher-badge {
+    display: flex;
+    align-items: center;
 }

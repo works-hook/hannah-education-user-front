@@ -95,20 +95,24 @@ const Lecture = (props) => {
               </Col>
             </Row>
             <div className="mt-5 py-5 border-top">
-              <Row className="justify-content-center">
-                <h1 className="text-default">강사 소개</h1>
+              <Row className="justify-content-center mb-3">
+                <h2 className="text-default">강사 소개</h2>
               </Row>
               <Row className="justify-content-center">
-                <Col xl={2} className="mx-5">
+                <Col xs={2}>
                   <img src={teacherData.img} alt={teacherData.img} className="img-fluid rounded-circle shadow"/>
-                  <div className="introduce-count mt-2">
-                    <Button color="default" size="sm" outline disabled>총 강의 수&nbsp;&nbsp;&nbsp;{teacherData.lectureCount}개</Button>
-                    <Button color="default" size="sm" outline disabled>총 수강생 수&nbsp;&nbsp;&nbsp;{teacherData.studentCount}명</Button>
+                </Col>
+                <Col xs={2} className="teacher-badge">
+                  <div className="introduce-count">
+                    <h3 className="text-default m-2">{teacherData.name}</h3>
+                    <span className="text-default m-2">{teacherData.oneLineIntroduction}</span>
+                    <Button color="default" size="sm" outline disabled className="m-2 mt-3">총 강의 수&nbsp;&nbsp;&nbsp;{teacherData.lectureCount}개</Button>
+                    <Button color="default" size="sm" outline disabled className="m-2">총 수강생 수&nbsp;&nbsp;&nbsp;{teacherData.studentCount}명</Button>
                   </div>
                 </Col>
+              </Row>
+              <Row className="justify-content-center mt-5">
                 <Col xl={8}>
-                  <h3 className="text-default">{teacherData.name}</h3>
-                  <span className="text-default">{teacherData.oneLineIntroduction}</span>
                   <Viewer initialValue={teacherData.introduce}/>
                 </Col>
               </Row>
