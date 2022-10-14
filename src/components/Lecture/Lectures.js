@@ -619,7 +619,7 @@ const Lectures = () => {
       <Row className="justify-content-center">
         {searchData.slice(offset, offset + 16).map((data) => {
           return (
-            <Link to={"/lectures/" + data.lectureId}>
+            <Link to={"/lectures/" + data.lectureId} className="lectures-link">
               <LectureCard
                 className="card-width"
                 key={data.lectureId}

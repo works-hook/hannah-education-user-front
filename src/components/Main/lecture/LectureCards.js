@@ -16,6 +16,7 @@ const CardType = {
 };
 Object.freeze(CardType);
 
+
 const LectureCards = ({title, type}) => {
   const lectureData = type === CardType.COMPLETED ? [
     {

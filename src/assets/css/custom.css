@@ -19,7 +19,7 @@
     margin-top: -11rem;
 }
 
-h1, h3, h6, p, span, .btn {
+h1, h3, h6, p {
     color: white;
     font-family: 'Noto Sans KR', sans-serif;
 }
@@ -180,9 +180,10 @@ blockquote {
     margin-top: -20rem;
 }
 
-.introduce-count > .btn {
+.introduce-count > button {
     margin: 0.5rem;
     font-weight: bold;
+    font-family: 'Noto Sans KR', sans-serif;
 }
 
 .footer-icon span {
@@ -191,4 +192,9 @@ blockquote {
 
 .footer-icon:hover span {
     color: #525f7f !important;
+}
+
+.lectures-link {
+    display: block;
+    height: 100%;
 }
