@@ -8,6 +8,7 @@ import "assets/scss/argon-design-system-react.scss?v1.1.0";
 
 import Index from "views/Index.js";
 import Lectures from "./components/Lecture/Lectures.js";
+import Lecture from "./components/Lecture/Lecture";
 import Landing from "views/examples/Landing.js";
 import Login from "views/examples/Login.js";
 import Profile from "views/examples/Profile.js";
@@ -32,9 +33,9 @@ root.render(
         component={(props) => <Lectures {...props} />}
       />
       <Route
-        path="/lecture/:lectureId"
+        path="/lectures/:lectureId"
         exact
-        render={(props) => <Index {...props} />}
+        render={(props) => <Lecture {...props} />}
       />
       <Route
         path="/landing-page"

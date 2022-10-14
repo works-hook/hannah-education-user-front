@@ -5,6 +5,7 @@ import "../../assets/css/custom.css";
 import LectureCard from "../Lecture/LectureCard.js";
 import Pagination from "../utils/Pagination.js";
 import {useState} from "react";
+import {Link} from "react-router-dom";
 
 const tags = [
   {
@@ -542,14 +543,8 @@ const Lectures = () => {
   const onSearchChange = (e) => setSearch(e.target.value);
 
   const [searchTags, setSearchTags] = useState([]);
-  const onAddSearchTag = (tag) => {
-    setSearchTags([...searchTags, tag]);
-    console.log(searchTags)
-  }
-  const offRemoveSearchTag = (tag) => {
-    setSearchTags(searchTags.filter(v => v !== tag));
-    console.log(searchTags)
-  }
+  const onAddSearchTag = (tag) => setSearchTags([...searchTags, tag]);
+  const offRemoveSearchTag = (tag) => setSearchTags(searchTags.filter(v => v !== tag));
 
   const [page, setPage] = useState(1);
   const offset = (page - 1) * 16;
@@ -624,13 +619,15 @@ const Lectures = () => {
       <Row className="justify-content-center">
         {searchData.slice(offset, offset + 16).map((data) => {
           return (
-            <LectureCard
-              className="card-width"
-              key={data.lectureId}
-              title={data.title}
-              img={data.img}
-              tags={data.tags}
-            />
+            <Link to={"/lectures/" + data.lectureId}>
+              <LectureCard
+                className="card-width"
+                key={data.lectureId}
+                title={data.title}
+                img={data.img}
+                tags={data.tags}
+              />
+            </Link>
           );
         })}
       </Row>

@@ -7,6 +7,7 @@ import "swiper/css";
 import "swiper/css/pagination";
 import "../../../assets/css/custom.css";
 import LectureCard from "../../Lecture/LectureCard";
+import {Link} from "react-router-dom";
 
 // custom enum
 const CardType = {
@@ -14,7 +15,6 @@ const CardType = {
   LIKE: 'like'
 };
 Object.freeze(CardType);
-
 
 const LectureCards = ({title, type}) => {
   const lectureData = type === CardType.COMPLETED ? [
@@ -277,12 +277,14 @@ const LectureCards = ({title, type}) => {
           {lectureData.map((data) => {
             return (
               <SwiperSlide key={data.lectureId}>
-                <LectureCard
-                  key={data.lectureId}
-                  title={data.title}
-                  img={data.img}
-                  tags={data.tags}
-                />
+                <Link to={"/lectures/" + data.lectureId}>
+                  <LectureCard
+                    key={data.lectureId}
+                    title={data.title}
+                    img={data.img}
+                    tags={data.tags}
+                  />
+                </Link>
               </SwiperSlide>
             );
           })}

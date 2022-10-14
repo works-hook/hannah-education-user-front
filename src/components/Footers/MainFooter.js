@@ -18,7 +18,7 @@ const MainFooter = () => {
           <Row className="align-items-center justify-content-md-between">
             <Col md="6">
               <div className="copyright">
-                © {new Date().getFullYear()}{" "}
+                copyright © {new Date().getFullYear()}{" "}
                 <a
                   target="_blank"
                   href={"https://github.com/HongChaeMin"}
@@ -28,7 +28,7 @@ const MainFooter = () => {
             </Col>
             <Col md="6">
               <Nav className="nav-footer justify-content-end">
-                <NavItem>
+                <NavItem className="footer-icon">
                   <NavLink
                     href="https://github.com/works-hook/hannah-education-user-front"
                     target="_blank"
@@ -39,7 +39,7 @@ const MainFooter = () => {
                     Github
                   </NavLink>
                 </NavItem>
-                <NavItem>
+                <NavItem className="footer-icon">
                   <NavLink
                     href="https://velog.io/@coals_0329"
                     target="_blank"
@@ -50,7 +50,7 @@ const MainFooter = () => {
                     Velog
                   </NavLink>
                 </NavItem>
-                <NavItem>
+                <NavItem className="footer-icon">
                   <NavLink
                     href="https://join.slack.com/t/workshook/shared_invite/zt-1hj2htf29-R6qLE30ArKYbLz3uKH50AQ"
                     target="_blank"
@@ -61,7 +61,7 @@ const MainFooter = () => {
                     Slack
                   </NavLink>
                 </NavItem>
-                <NavItem>
+                <NavItem className="footer-icon">
                   <NavLink
                     href="https://www.linkedin.com/in/hannah-linkdin/"
                     target="_blank"
