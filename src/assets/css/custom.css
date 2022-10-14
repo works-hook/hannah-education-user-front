@@ -153,5 +153,16 @@ blockquote {
 }
 
 .pointer > .badge:hover {
-    background: #b0b5cc;
+    background: #79b7be;
+    color: white;
+}
+
+.active > .badge {
+    background: #3e838b;
+    color: white;
+}
+
+.active > .badge:hover {
+    background: #025059 !important;
+    color: white !important;
 }

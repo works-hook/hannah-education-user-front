@@ -9,12 +9,15 @@ import {useState} from "react";
 const tags = [
   {
     name: "Java",
+    color: "primary",
   },
   {
     name: "Kotlin",
+    color: "warning",
   },
   {
     name: "Spring",
+    color: "primary",
   },
   {
     name: "Spring boot",
@@ -534,16 +537,27 @@ const lectureData = [
   },
 ];
 
-const LectureList = () => {
+const Lectures = () => {
   const [search, setSearch] = useState("");
   const onSearchChange = (e) => setSearch(e.target.value);
 
   const [searchTags, setSearchTags] = useState([]);
-  const onAddSearchTag = (tag) => setSearchTags([...searchTags, tag]);
+  const onAddSearchTag = (tag) => {
+    setSearchTags([...searchTags, tag]);
+    console.log(searchTags)
+  }
+  const offRemoveSearchTag = (tag) => {
+    setSearchTags(searchTags.filter(v => v !== tag));
+    console.log(searchTags)
+  }
+
+  const [page, setPage] = useState(1);
+  const offset = (page - 1) * 16;
 
   const searchData = lectureData.filter((data) => {
-    const fag = searchTagCheck(data)
-    return data.title.toLocaleLowerCase().includes(search.toLocaleLowerCase()) && fag
+    const tagFag = searchTagCheck(data);
+    const titleFag = data.title.toLocaleLowerCase().includes(search.toLocaleLowerCase());
+    return titleFag && tagFag;
   });
 
   function searchTagCheck(data) {
@@ -553,13 +567,10 @@ const LectureList = () => {
     } else {
       data.tags.map((tag) => {
         if (searchTags.includes(tag.name)) fag = true;
-      })
+      });
     }
     return fag;
   }
-
-  const [page, setPage] = useState(1);
-  const offset = (page - 1) * 16;
 
   return <>
     <section className="index-section section-shaped">
@@ -589,12 +600,25 @@ const LectureList = () => {
       <Row className="mb-2 ml-2">
         {tags.map((tag, index) => {
           return (
-            <div key={index} className="pointer" onClick={ () => onAddSearchTag(tag.name) } >
-              <Badge pill className="m-1" >
-                {tag.name}
-              </Badge>
-            </div>
-          );
+            searchTags.includes(tag.name)
+              ? <div key={index} className="pointer active" onClick={() => {
+                  offRemoveSearchTag(tag.name);
+                  setPage(1);
+                }}>
+                  <Badge pill className="m-1" color={tag.color}>
+                    {tag.name}
+                    <span aria-hidden="true">&nbsp;&nbsp;&nbsp;×</span>
+                  </Badge>
+                </div>
+              : <div key={index} className="pointer" onClick={() => {
+                  onAddSearchTag(tag.name);
+                  setPage(1);
+                }}>
+                  <Badge pill className="m-1" >
+                    {tag.name}
+                  </Badge>
+                </div>
+            );
         })}
       </Row>
       <Row className="justify-content-center">
@@ -622,4 +646,4 @@ const LectureList = () => {
   </>;
 }
 
-export default LectureList;
+export default Lectures;

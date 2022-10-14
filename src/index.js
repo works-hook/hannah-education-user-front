@@ -1,13 +1,13 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import {BrowserRouter, Route, Switch, Redirect} from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
 
 import "assets/vendor/nucleo/css/nucleo.css";
 import "assets/vendor/font-awesome/css/font-awesome.min.css";
 import "assets/scss/argon-design-system-react.scss?v1.1.0";
 
 import Index from "views/Index.js";
-import LectureList from "./components/Lecture/LectureList.js";
+import Lectures from "./components/Lecture/Lectures.js";
 import Landing from "views/examples/Landing.js";
 import Login from "views/examples/Login.js";
 import Profile from "views/examples/Profile.js";
@@ -18,18 +18,18 @@ import MainFooter from "./components/Footers/MainFooter";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
 root.render(
-  <BrowserRouter>
+  <Router>
     <Navbar />
     <Switch>
       <Route
         path="/"
         exact
-        render={(props) => <Index {...props} />}
+        component={(props) => <Index {...props} />}
       />
       <Route
         path="/lectures"
         exact
-        render={(props) => <LectureList {...props} />}
+        component={(props) => <Lectures {...props} />}
       />
       <Route
         path="/lecture/:lectureId"
@@ -59,5 +59,5 @@ root.render(
       <Redirect to="/"/>
     </Switch>
     <MainFooter/>
-  </BrowserRouter>
+  </Router>
 );
