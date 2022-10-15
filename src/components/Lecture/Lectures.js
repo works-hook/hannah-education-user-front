@@ -5,7 +5,7 @@ import "../../assets/css/custom.css";
 import LectureCard from "../Lecture/LectureCard.js";
 import Pagination from "../utils/Pagination.js";
 import {useState} from "react";
-import {Link} from "react-router-dom";
+import {Link, useLocation} from "react-router-dom";
 
 const tags = [
   {
@@ -538,11 +538,12 @@ const lectureData = [
   },
 ];
 
-const Lectures = () => {
+const Lectures = (props) => {
   const [search, setSearch] = useState("");
   const onSearchChange = (e) => setSearch(e.target.value);
 
-  const [searchTags, setSearchTags] = useState([]);
+  let location = useLocation();
+  const [searchTags, setSearchTags] = useState([location.state.searchTag]);
   const onAddSearchTag = (tag) => setSearchTags([...searchTags, tag]);
   const offRemoveSearchTag = (tag) => setSearchTags(searchTags.filter(v => v !== tag));
 
@@ -560,9 +561,9 @@ const Lectures = () => {
     if (searchTags.length < 1) {
       fag = true;
     } else {
-      data.tags.map((tag) => {
-        if (searchTags.includes(tag.name)) fag = true;
-      });
+      for (const idx in data.tags) {
+        if (searchTags.includes(data.tags[idx].name)) fag = true;
+      }
     }
     return fag;
   }
@@ -619,7 +620,7 @@ const Lectures = () => {
       <Row className="justify-content-center">
         {searchData.slice(offset, offset + 16).map((data) => {
           return (
-            <Link to={"/lectures/" + data.lectureId} className="lectures-link">
+            <Link to={`/lectures/${data.lectureId}`} className="lectures-link">
               <LectureCard
                 className="card-width"
                 key={data.lectureId}

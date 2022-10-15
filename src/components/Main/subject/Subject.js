@@ -1,5 +1,6 @@
 import {Row, Col, Container} from "reactstrap";
 import "../../../assets/css/custom.css";
+import {Link} from "react-router-dom";
 
 const subjectData = [
   {
@@ -45,16 +46,22 @@ const Subject = () => {
       <Container className="py-md">
         <Row className="justify-content-between minus-mt-25">
           {subjectData.map((data) => (
-            <Col className="text-center" key={data.id}>
-              <small className="d-block font-weight-bold mb-4">
-                {data.title}
-              </small>
-              <img
-                alt={data.title}
-                className="img-fluid rounded-circle shadow subject-image"
-                src={data.src}
-              />
-            </Col>
+            <Link to={{
+                pathname: `lectures`,
+                state: { searchTag: data.title }
+              }}
+            >
+              <Col className="text-center" key={data.id}>
+                <small className="d-block font-weight-bold mb-4 text-default">
+                  {data.title}
+                </small>
+                <img
+                  alt={data.title}
+                  className="img-fluid rounded-circle shadow subject-image"
+                  src={data.src}
+                />
+              </Col>
+            </Link>
           ))}
         </Row>
       </Container>
