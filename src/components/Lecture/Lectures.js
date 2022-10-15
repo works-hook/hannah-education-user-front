@@ -538,12 +538,13 @@ const lectureData = [
   },
 ];
 
-const Lectures = (props) => {
+const Lectures = () => {
   const [search, setSearch] = useState("");
   const onSearchChange = (e) => setSearch(e.target.value);
 
   let location = useLocation();
-  const [searchTags, setSearchTags] = useState([location.state.searchTag]);
+  const defaultTag = location.state === undefined ? [] : [location.state.searchTag]
+  const [searchTags, setSearchTags] = useState(defaultTag);
   const onAddSearchTag = (tag) => setSearchTags([...searchTags, tag]);
   const offRemoveSearchTag = (tag) => setSearchTags(searchTags.filter(v => v !== tag));
 
@@ -620,7 +621,7 @@ const Lectures = (props) => {
       <Row className="justify-content-center">
         {searchData.slice(offset, offset + 16).map((data) => {
           return (
-            <Link to={`/lectures/${data.lectureId}`} className="lectures-link">
+            <Link key={data.lectureId} to={`/lectures/${data.lectureId}`} className="lectures-link">
               <LectureCard
                 className="card-width"
                 key={data.lectureId}
