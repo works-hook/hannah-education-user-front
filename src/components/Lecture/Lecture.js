@@ -52,8 +52,6 @@ const Lecture = (props) => {
 
   const [subscribe, setSubscribe] = useState(false);
   const onSubscribe = () => {
-    console.log(subscribe)
-    console.log("-------------")
     setSubscribe(!subscribe);
   }
 
