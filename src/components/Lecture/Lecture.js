@@ -51,9 +51,7 @@ const Lecture = (props) => {
   console.log(props.match.params.lectureId)
 
   const [subscribe, setSubscribe] = useState(false);
-  const onSubscribe = () => {
-    setSubscribe(!subscribe);
-  }
+  const onSubscribe = () => setSubscribe(!subscribe);
 
   return <>
     <section className="section-profile-cover section-shaped my-0 minus-mt-25">
@@ -88,7 +86,12 @@ const Lecture = (props) => {
             <Row className="justify-content-center">
               <Col className="my-3" xl={8}>
                 <div className="text-center">
-                  <h3 className="text-default">{lectureData.title}</h3>
+                  <div className="d-flex justify-content-center">
+                    <h3 className="text-default">{lectureData.title}</h3>
+                    <span className="alert-inner--icon">
+                      <i className="ni ni-like-2" />
+                    </span>{" "}
+                  </div>
                   <div className="mb-3">
                     {lectureData.tags.map((tag, index) => {
                       return (
