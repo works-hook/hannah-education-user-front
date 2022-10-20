@@ -10,11 +10,13 @@ import Index from "views/Index.js";
 import Lectures from "./components/Lecture/Lectures.js";
 import Lecture from "./components/Lecture/Lecture";
 import Landing from "views/examples/Landing.js";
-import Login from "views/examples/Login.js";
+import Login from "components/Login/Login.js";
 import Profile from "views/examples/Profile.js";
 import Register from "views/examples/Register.js";
 import Navbar from "./components/Navbars/TopNavbar";
 import MainFooter from "./components/Footers/MainFooter";
+import FindAccount from "./components/Login/FindAccount";
+import CreateAccount from "./components/Login/CreateAccount";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
@@ -38,14 +40,24 @@ root.render(
         render={(props) => <Lecture {...props} />}
       />
       <Route
+        path="/login"
+        exact
+        render={(props) => <Login {...props} />}
+      />
+      <Route
+        path="/find-account"
+        exact
+        render={(props) => <FindAccount {...props} />}
+      />
+      <Route
+        path="/create-account"
+        exact
+        render={(props) => <CreateAccount {...props} />}
+      />
+      <Route
         path="/landing-page"
         exact
         render={(props) => <Landing {...props} />}
-      />
-      <Route
-        path="/login-page"
-        exact
-        render={(props) => <Login {...props} />}
       />
       <Route
         path="/profile-page"

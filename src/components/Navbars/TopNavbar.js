@@ -45,21 +45,13 @@ const TopNavbar = () => {
                     </NavLink>
                 </NavItem>
                 <NavItem>
-                  <NavLink href="#pablo" onClick={e => e.preventDefault()}>
-                    Profile
+                  <NavLink href={"/login"}>
+                    Login
                   </NavLink>
                 </NavItem>
                 <UncontrolledDropdown nav>
-                  <NavLink
-                      aria-expanded={false}
-                      aria-haspopup={true}
-                      data-toggle="dropdown"
-                      href="#pablo"
-                      id="navbar-default_dropdown_1"
-                      onClick={e => e.preventDefault()}
-                      role="button"
-                  >
-                    Settings
+                  <NavLink href={"/my-page"}>
+                    MyPage
                   </NavLink>
                   <DropdownMenu
                       aria-labelledby="navbar-default_dropdown_1"

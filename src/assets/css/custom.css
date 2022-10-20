@@ -129,6 +129,10 @@ blockquote {
     width: 90%;
 }
 
+.w-40 {
+    width: 40%;
+}
+
 .text-default {
     white-space: nowrap;
     overflow: hidden;
