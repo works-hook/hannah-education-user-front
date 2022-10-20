@@ -3,7 +3,7 @@ import {
   Card,
   Col,
   Container, Modal,
-  Row
+  Row, UncontrolledTooltip
 } from "reactstrap";
 import "../../assets/css/custom.css";
 import '@toast-ui/editor/dist/toastui-editor-viewer.css';
@@ -36,6 +36,7 @@ const lectureData = {
       color: "success",
     },
   ],
+  likeCount: 429,
 };
 
 const teacherData = {
@@ -52,6 +53,15 @@ const Lecture = (props) => {
 
   const [subscribe, setSubscribe] = useState(false);
   const onSubscribe = () => setSubscribe(!subscribe);
+
+  const [like, setLike] = useState(false);
+  const [likeCount, setLikeCount] = useState(lectureData.likeCount)
+  const onLike = (cancel) => {
+    setLike(!like);
+    setLikeCount(cancel ? likeCount - 1 : likeCount + 1);
+    console.log(`like : ${like}, likeCount : ${likeCount}`)
+  }
+
 
   return <>
     <section className="section-profile-cover section-shaped my-0 minus-mt-25">
@@ -86,12 +96,27 @@ const Lecture = (props) => {
             <Row className="justify-content-center">
               <Col className="my-3" xl={8}>
                 <div className="text-center">
-                  <div className="d-flex justify-content-center">
-                    <h3 className="text-default">{lectureData.title}</h3>
-                    <span className="alert-inner--icon">
-                      <i className="ni ni-like-2" />
-                    </span>{" "}
-                  </div>
+                  <h3 className="text-default">{lectureData.title}</h3>
+                  <span className="alert-inner--icon d-flex justify-content-center mb-2">
+                    <div className="mr-1 pointer">
+                      { like
+                        ? <i className="fa fa-heart" onClick={() => { onLike(true) }}/>
+                        : <>
+                          <UncontrolledTooltip
+                            delay={0}
+                            placement="top"
+                            target="like"
+                          > Like! </UncontrolledTooltip>
+                          <i className="fa fa-heart-o" data-placement="top" id="like"
+                             onClick={() => { onLike(false) }}
+                          />
+                        </>
+                      }
+                    </div>
+                    <div>
+                      {likeCount}
+                    </div>
+                  </span>
                   <div className="mb-3">
                     {lectureData.tags.map((tag, index) => {
                       return (
