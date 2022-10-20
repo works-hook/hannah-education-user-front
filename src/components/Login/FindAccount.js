@@ -11,7 +11,7 @@ import {
   InputGroup,
   Container,
   Row,
-  Col
+  Col, Alert, UncontrolledAlert
 } from "reactstrap";
 import {Link} from "react-router-dom";
 import Timer from "../utils/Timer";
@@ -19,6 +19,9 @@ import Timer from "../utils/Timer";
 const FindAccount = () => {
   const [timer, setTimer] = useState(false);
   const timerStart = () => setTimer(true);
+
+  const [foundIdAlert, setFoundIdAlert] = useState(false);
+  const foundId = () => setFoundIdAlert(!foundIdAlert);
 
   return <>
     <section className="section section-shaped">
@@ -59,8 +62,13 @@ const FindAccount = () => {
                     </FormGroup>
                   </Form>
                 </div>
+                {foundIdAlert &&
+                  <UncontrolledAlert className="alert-default">
+                    회원님의 아이디는 <strong>cl******29</strong>입니다
+                  </UncontrolledAlert>
+                }
                 <div className="text-center">
-                  <Button block color="primary" type="button">
+                  <Button block color="primary" type="button" onClick={foundId}>
                     아이디 찾기
                   </Button>
                 </div>
