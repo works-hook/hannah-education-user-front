@@ -11,7 +11,8 @@ import {
   InputGroup,
   Container,
   Row,
-  Col, Alert, UncontrolledAlert
+  Col,
+  UncontrolledAlert
 } from "reactstrap";
 import {Link} from "react-router-dom";
 import Timer from "../utils/Timer";
@@ -134,7 +135,7 @@ const FindAccount = () => {
                     </Link>
                   </Col>
                   <Col className="text-right" xs="6">
-                    <Link to={"/create-user"}>
+                    <Link to={"/create-account"}>
                       <small>Create new account</small>
                     </Link>
                   </Col>

@@ -24,6 +24,10 @@ h1, h3, h6, p, h2 {
     font-family: 'Noto Sans KR', sans-serif;
 }
 
+a {
+    font-family: 'Noto Sans KR', sans-serif;
+}
+
 .subject-image {
     width: 120px;
 }
@@ -206,4 +210,8 @@ blockquote {
 .teacher-badge {
     display: flex;
     align-items: center;
+}
+
+.dropdown-menu {
+    top: 55px !important;
 }

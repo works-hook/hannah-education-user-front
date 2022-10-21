@@ -17,6 +17,7 @@ import Navbar from "./components/Navbars/TopNavbar";
 import MainFooter from "./components/Footers/MainFooter";
 import FindAccount from "./components/Login/FindAccount";
 import CreateAccount from "./components/Login/CreateAccount";
+import MyPage from "./components/My/MyPage";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
@@ -53,6 +54,11 @@ root.render(
         path="/create-account"
         exact
         render={(props) => <CreateAccount {...props} />}
+      />
+      <Route
+        path="/my-page"
+        exact
+        render={(props) => <MyPage {...props} />}
       />
       <Route
         path="/landing-page"
