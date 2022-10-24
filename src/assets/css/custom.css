@@ -24,7 +24,7 @@ h1, h3, h6, p, h2 {
     font-family: 'Noto Sans KR', sans-serif;
 }
 
-a {
+a, .btn-sm {
     font-family: 'Noto Sans KR', sans-serif;
 }
 
@@ -181,6 +181,15 @@ blockquote {
     max-width: 100%;
     width: 40rem;
     height: 25rem;
+    margin-top: -10rem;
+}
+
+.profile-img {
+    box-shadow: 0 1rem 3rem rgb(0 0 0 / 18%) !important;
+    border-radius: 50% !important;
+    max-width: 100%;
+    width: 20rem;
+    height: 20rem;
     margin-top: -10rem;
 }
 
