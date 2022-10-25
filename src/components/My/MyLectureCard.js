@@ -2,9 +2,8 @@ import {
   Badge, Row, Col, Progress, ListGroup, ListGroupItem, Button
 } from "reactstrap";
 
-const MyLectureCard = ({data, className}) => {
+const MyLectureCard = ({data, className, toggleModal}) => {
   const notices = data.notices;
-
 
   return (<>
     <Row className={`justify-content-between ${className}`}>
@@ -46,7 +45,7 @@ const MyLectureCard = ({data, className}) => {
         <ListGroup>
           {notices.map((notice) => {
             return <ListGroupItem key={notice.noticeId} className="all-center">
-              <h6 className="text-default pointer">{notice.title}</h6>
+              <h6 className="text-default pointer" onClick={toggleModal}>{notice.title}</h6>
               <div>{notice.regDate}</div>
             </ListGroupItem>
           })}
