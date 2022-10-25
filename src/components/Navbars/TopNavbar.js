@@ -60,13 +60,13 @@ const TopNavbar = () => {
                   </span>
                 </DropdownToggle>
                 <DropdownMenu>
-                  <DropdownItem to="/landing-page" tag={Link}>
+                  <DropdownItem to="/my-lecture" tag={Link}>
                     내 강의
                   </DropdownItem>
                   <DropdownItem to="/my-page" tag={Link}>
                     내 정보 수정
                   </DropdownItem>
-                  <DropdownItem to="/register-page" tag={Link}>
+                  <DropdownItem to="/" tag={Link}>
                     Logout
                   </DropdownItem>
                 </DropdownMenu>

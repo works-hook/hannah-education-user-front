@@ -6,18 +6,16 @@ import "assets/vendor/nucleo/css/nucleo.css";
 import "assets/vendor/font-awesome/css/font-awesome.min.css";
 import "assets/scss/argon-design-system-react.scss?v1.1.0";
 
-import Index from "views/Index.js";
+import Index from "./components/Index.js";
 import Lectures from "./components/Lecture/Lectures.js";
 import Lecture from "./components/Lecture/Lecture";
-import Landing from "views/examples/Landing.js";
 import Login from "components/Login/Login.js";
-import Profile from "views/examples/Profile.js";
-import Register from "views/examples/Register.js";
 import Navbar from "./components/Navbars/TopNavbar";
 import MainFooter from "./components/Footers/MainFooter";
 import FindAccount from "./components/Login/FindAccount";
 import CreateAccount from "./components/Login/CreateAccount";
 import MyPage from "./components/My/MyPage";
+import MyLecture from "./components/My/MyLecture";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
@@ -61,19 +59,9 @@ root.render(
         render={(props) => <MyPage {...props} />}
       />
       <Route
-        path="/landing-page"
+        path="/my-lecture"
         exact
-        render={(props) => <Landing {...props} />}
-      />
-      <Route
-        path="/profile-page"
-        exact
-        render={(props) => <Profile {...props} />}
-      />
-      <Route
-        path="/register-page"
-        exact
-        render={(props) => <Register {...props} />}
+        render={(props) => <MyLecture {...props} />}
       />
       <Redirect to="/"/>
     </Switch>

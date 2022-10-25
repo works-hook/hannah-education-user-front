@@ -1,7 +1,7 @@
-import Banner from "../components/Main/banner/Banner.js";
-import Subject from "../components/Main/subject/Subject.js";
-import LectureCards, {CardType} from "../components/Main/lecture/LectureCards.js";
-import TeacherCards from "../components/Main/teacher/TeacherCards";
+import Banner from "./Main/banner/Banner.js";
+import Subject from "./Main/subject/Subject.js";
+import LectureCards, {CardType} from "./Main/lecture/LectureCards.js";
+import TeacherCards from "./Main/teacher/TeacherCards";
 
 const Index = (props) => {
   const {customRef} = props;
