@@ -2,7 +2,7 @@ import {
   Badge, Row, Col, Progress, ListGroup, ListGroupItem, Button
 } from "reactstrap";
 
-const MyLectureCard = ({data, className, toggleModal}) => {
+const MyLectureCard = ({data, className, toggleModal, lectureModal}) => {
   const notices = data.notices;
 
   return (<>
@@ -38,7 +38,7 @@ const MyLectureCard = ({data, className, toggleModal}) => {
         </div>
         <h6 className="text-default mt-3">강의 시작일</h6><span>{data.startDate}</span>
         <h6 className="text-default mt-3">강의 종료일</h6><span>{data.endDate}</span><br/>
-        <Button color="primary" outline size="sm" className="mt-2">강의 보기</Button>
+        <Button color="primary" outline size="sm" className="mt-2" onClick={lectureModal}>강의 보기</Button>
       </Col>
       <Col className="mw-40">
         <h6 className="text-default">최근 강의 공지</h6>

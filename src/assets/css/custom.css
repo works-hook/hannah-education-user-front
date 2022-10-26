@@ -24,7 +24,7 @@ h1, h3, h6, p, h2 {
     font-family: 'Noto Sans KR', sans-serif;
 }
 
-a, .btn-sm, .badge, .custom-font {
+a, .btn-sm, .badge, .custom-font, .modal-header {
     font-family: 'Noto Sans KR', sans-serif;
 }
 
@@ -261,4 +261,28 @@ blockquote {
     display: flex;
     justify-content: space-between;
     align-content: center;
+}
+
+.class-modal {
+    max-width: 80% !important;
+}
+
+.ml-45 {
+    margin-left: 49rem;
+}
+
+.t-5 {
+    top: 5px !important;
+}
+
+.h-42 {
+    height: 42px;
+}
+
+.modal-header {
+    align-items: center !important;
+}
+
+.modal-header .close {
+    margin: 0 !important;
 }
