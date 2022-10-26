@@ -1,8 +1,10 @@
 import {
   Badge, Row, Col, Progress, ListGroup, ListGroupItem, Button
 } from "reactstrap";
+import NoticeModal from "./NoticeModal";
+import LectureModal from "./LectureModal";
 
-const MyLectureCard = ({data, className, toggleModal, lectureModal}) => {
+const MyLectureTable = ({data, className, toggleModal, toggleState, lectureModal, lectureToggle}) => {
   const notices = data.notices;
 
   return (<>
@@ -51,8 +53,19 @@ const MyLectureCard = ({data, className, toggleModal, lectureModal}) => {
           })}
         </ListGroup>
       </Col>
+      <NoticeModal
+        key={data.noticeId}
+        toggleModal={toggleModal}
+        toggleState={toggleState}
+        noticeId={data.noticeId}
+      />
+      <LectureModal
+        lectureModal={lectureModal}
+        lectureToggle={lectureToggle}
+        lectureId={data.lectureId}
+      />
     </Row>
   </>);
 }
 
-export default MyLectureCard;
+export default MyLectureTable;
