@@ -15,6 +15,8 @@ import {
 import {useState} from "react";
 import MyLectureTable from "./MyLectureTable";
 import MyBackground from "../utils/MyBackground";
+import NoticeModal from "./NoticeModal";
+import LectureModal from "./LectureModal";
 
 const lectureData = [
   {
@@ -111,6 +113,12 @@ const MyLecture = () => {
     });
   };
 
+  const [lectureId, setLectureId] = useState(0);
+  const onLectureId = (id) => setLectureId(id);
+
+  const [noticeId, setNoticeId]= useState(0);
+  const onNoticeId = (id) => setNoticeId(id);
+
   const [toggleState, setToggleState] = useState(false);
   const toggleModal = () => setToggleState(!toggleState);
 
@@ -179,9 +187,9 @@ const MyLecture = () => {
                             key={data.lectureId}
                             data={data}
                             toggleModal={toggleModal}
-                            toggleState={toggleState}
                             lectureModal={lectureModal}
-                            lectureToggle={lectureToggle}
+                            onLectureId={onLectureId}
+                            onNoticeId={onNoticeId}
                           />
                         </ListGroupItem>
                       })}
@@ -210,6 +218,16 @@ const MyLecture = () => {
           </Col>
         </Row>
       </Container>
+      <NoticeModal
+        toggleModal={toggleModal}
+        toggleState={toggleState}
+        noticeId={noticeId}
+      />
+      <LectureModal
+        lectureModal={lectureModal}
+        lectureToggle={lectureToggle}
+        lectureId={lectureId}
+      />
     </section>
   </>;
 }
