@@ -5,7 +5,6 @@ import NoticeModal from "./NoticeModal";
 import LectureModal from "./LectureModal";
 
 const MyLectureTable = ({data, className, toggleModal, toggleState, lectureModal, lectureToggle}) => {
-  const notices = data.notices;
 
   return (<>
     <Row className={`justify-content-between ${className}`}>
@@ -45,7 +44,7 @@ const MyLectureTable = ({data, className, toggleModal, toggleState, lectureModal
       <Col className="mw-40">
         <h6 className="text-default">최근 강의 공지</h6>
         <ListGroup>
-          {notices.map((notice) => {
+          {data.notices.map((notice) => {
             return <ListGroupItem key={notice.noticeId} className="all-center">
               <h6 className="text-default pointer" onClick={toggleModal}>{notice.title}</h6>
               <div>{notice.regDate}</div>
@@ -60,6 +59,7 @@ const MyLectureTable = ({data, className, toggleModal, toggleState, lectureModal
         noticeId={data.noticeId}
       />
       <LectureModal
+        key={data.lectureId}
         lectureModal={lectureModal}
         lectureToggle={lectureToggle}
         lectureId={data.lectureId}
