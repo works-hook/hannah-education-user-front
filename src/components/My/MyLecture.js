@@ -17,6 +17,7 @@ import MyLectureTable from "./MyLectureTable";
 import MyBackground from "../utils/MyBackground";
 import NoticeModal from "./NoticeModal";
 import LectureModal from "./LectureModal";
+import LikeLectureTable from "./LikeLectureTable";
 
 const lectureData = [
   {
@@ -196,12 +197,7 @@ const MyLecture = () => {
                     </ListGroup>
                   </TabPane>
                   <TabPane tabId="iconTabs2">
-                    <p className="description">
-                      Cosby sweater eu banh mi, qui irure terry richardson ex
-                      squid. Aliquip placeat salvia cillum iphone. Seitan
-                      aliquip quis cardigan american apparel, butcher voluptate
-                      nisi qui.
-                    </p>
+                    <LikeLectureTable userId={2} />
                   </TabPane>
                   <TabPane tabId="iconTabs3">
                     <p className="description">
