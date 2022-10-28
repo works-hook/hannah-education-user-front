@@ -169,7 +169,7 @@ const LectureModal = ({lectureToggle, lectureModal, lectureId}) => {
           }
         </div>
       })}
-      { classShowData.length < 1 && <Alert color="yellow">수업을 선택해주세요.</Alert> }
+      { classShowData.length < 1 && <Alert color="info">수업을 선택해주세요.</Alert> }
     </div>
     <div className="modal-footer">
       <Button

@@ -59,7 +59,6 @@ const Lecture = (props) => {
   const onLike = (cancel) => {
     setLike(!like);
     setLikeCount(cancel ? likeCount - 1 : likeCount + 1);
-    console.log(`like : ${like}, likeCount : ${likeCount}`)
   }
 
 

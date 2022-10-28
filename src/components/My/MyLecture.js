@@ -18,6 +18,7 @@ import MyBackground from "../utils/MyBackground";
 import NoticeModal from "./NoticeModal";
 import LectureModal from "./LectureModal";
 import LikeLectureTable from "./LikeLectureTable";
+import LectureChart from "./LectureChart";
 
 const lectureData = [
   {
@@ -171,8 +172,8 @@ const MyLecture = () => {
                     href="#"
                     role="tab"
                   >
-                    <i className="ni ni-bell-55 mr-2"/>
-                    내 질문
+                    <i className="ni ni-chart-bar-32 mr-2"/>
+                    내 학습 통계
                   </NavLink>
                 </NavItem>
               </Nav>
@@ -200,13 +201,7 @@ const MyLecture = () => {
                     <LikeLectureTable userId={2} />
                   </TabPane>
                   <TabPane tabId="iconTabs3">
-                    <p className="description">
-                      Raw denim you probably haven't heard of them jean shorts
-                      Austin. Nesciunt tofu stumptown aliqua, retro synth master
-                      cleanse. Mustache cliche tempor, williamsburg carles vegan
-                      helvetica. Reprehenderit butcher retro keffiyeh
-                      dreamcatcher synth.
-                    </p>
+                    <LectureChart />
                   </TabPane>
                 </TabContent>
               </CardBody>

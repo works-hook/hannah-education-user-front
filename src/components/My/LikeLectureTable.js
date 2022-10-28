@@ -1,5 +1,5 @@
 import LectureCard from "../Lecture/LectureCard";
-import {Row} from "reactstrap";
+import {Button, Row} from "reactstrap";
 import {Link} from "react-router-dom";
 
 const LikeLectureTable = ({userId}) => {
@@ -91,6 +91,10 @@ const LikeLectureTable = ({userId}) => {
           <LectureCard title={data.title} img={data.img} tags={data.tags} className={"mx-2"}/>
         </Link>
       })}
+      {likeLectures.length < 1 &&
+        <Link to={"/lectures"}>
+          <Button color="success">강의를 둘러보고 좋아요를 클릭해보세요!</Button>
+        </Link>}
     </Row>
   </>;
 }

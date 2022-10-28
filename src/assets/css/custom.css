@@ -24,7 +24,7 @@ h1, h3, h6, p, h2 {
     font-family: 'Noto Sans KR', sans-serif;
 }
 
-a, .btn-sm, .badge, .custom-font, .modal-header {
+a, h5, span, .btn-sm, .badge, .custom-font, .modal-header, .card-header {
     font-family: 'Noto Sans KR', sans-serif;
 }
 
@@ -291,4 +291,18 @@ blockquote {
 
 .modal-header .close {
     margin: 0 !important;
+}
+
+.chart-card {
+    background-color: #f6f9fc;
+    height: 240px;
+}
+
+.chart-badge {
+    padding: 10px;
+    padding-inline: 15px;
+    margin-right: 0.5rem !important;
+    margin-top: 0.5rem;
+    font-size: 13px;
+    opacity: 0.7;
 }
