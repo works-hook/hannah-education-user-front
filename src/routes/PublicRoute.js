@@ -7,7 +7,6 @@ export default function PublicRoute({ children }) {
   const { isAuth } = CheckToken(location.key);
 
   if (isAuth === 'Success') return navigate.push("/", location)
-  // <Navigate to="/lectures" state={{from: location}}/>
 
   return children
 }

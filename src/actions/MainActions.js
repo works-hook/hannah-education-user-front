@@ -1,12 +1,13 @@
 import instance from "./MyAxios";
 
-const BASE_URL = "http://localhost:8080/user-student"
+const BASE_URL = "http://localhost:8080"
 
 export const getBanners = async() => {
-  const { data } = await instance.get(`${BASE_URL}/banner`);
+  const { data } = await instance.get(`${BASE_URL}/user-student/banner`);
   return data;
 }
 
-export const ping = async() => {
-  return await instance.get(`http://localhost:8080/ping`)
+export const getSubjects = async() => {
+  const { data } = await instance.get(`${BASE_URL}/lecture/tags-random`);
+  return data;
 }
