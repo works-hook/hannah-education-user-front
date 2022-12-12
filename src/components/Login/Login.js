@@ -12,9 +12,40 @@ import {
   Row,
   Col
 } from "reactstrap";
-import {Link} from "react-router-dom";
+import {Link, useHistory} from "react-router-dom";
+import {useDispatch} from "react-redux";
+import {useState} from "react";
+import {loginUser} from "../../actions/UserActions";
+import {setRefreshToken} from "../../token/Cookies";
+import {SET_TOKEN} from "../../token/Auth";
 
 const Login = () => {
+  const dispatch = useDispatch();
+  const navigate = useHistory();
+
+  const [account, setAccount] = useState("");
+  const [password, setPassword] = useState("");
+
+  const onAccountHandler = (e) => setAccount(e.currentTarget.value);
+  const onPasswordHandler = (e) => setPassword(e.currentTarget.value);
+
+  const onSubmitHandler = async (event) => {
+    event.preventDefault();
+
+    const body = { account: account,  password: password }
+
+    const response = await loginUser(body);
+
+    if (response.success === 'LOGIN') {
+      setRefreshToken(response.data.token)
+      dispatch(SET_TOKEN(response.data.token))
+
+      return navigate.push("/")
+    } else {
+      alert(response.message)
+    }
+  }
+
   return <>
     <section className="section section-shaped">
       <div className="shape shape-style-1 shape-default"/>
@@ -35,7 +66,12 @@ const Login = () => {
                             <i className="ni ni-circle-08"/>
                           </InputGroupText>
                         </InputGroupAddon>
-                        <Input placeholder="Id" type="text"/>
+                        <Input
+                          placeholder="Id"
+                          type="text"
+                          value={account}
+                          onChange={onAccountHandler}
+                        />
                       </InputGroup>
                     </FormGroup>
                     <FormGroup>
@@ -49,6 +85,8 @@ const Login = () => {
                           placeholder="Password"
                           type="password"
                           autoComplete="off"
+                          value={password}
+                          onChange={onPasswordHandler}
                         />
                       </InputGroup>
                     </FormGroup>
@@ -70,6 +108,7 @@ const Login = () => {
                   <Button
                     color="primary"
                     type="button"
+                    onClick={onSubmitHandler}
                   >
                     Sign in
                   </Button>

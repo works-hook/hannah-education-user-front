@@ -1,6 +1,6 @@
-import Banner from "./Main/banner/Banner.js";
-import Subject from "./Main/subject/Subject.js";
-import LectureCards, {CardType} from "./Main/lecture/LectureCards.js";
+import Banner from "./Main/banner/Banner";
+import Subject from "./Main/subject/Subject";
+import LectureCards, {CardType} from "./Main/lecture/LectureCards";
 import TeacherCards from "./Main/teacher/TeacherCards";
 
 const Index = (props) => {
