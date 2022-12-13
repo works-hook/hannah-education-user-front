@@ -27,3 +27,22 @@ export const getTeacher = async(id) => {
   return data;
 }
 
+export const likedLecture = async() => {
+  const { data } = await instance.get(`${BASE_URL}/like`);
+  return data;
+}
+
+export const checkLikedLecture = async(lectureId) => {
+  const { data } = await instance.get(`${BASE_URL}/like/${lectureId}`);
+  return data;
+}
+
+export const likeLecture = async(lectureId) => {
+  const { data } = await instance.post(`${BASE_URL}/like/${lectureId}`);
+  return data;
+}
+
+export const cancelLikeLecture = async(lectureId) => {
+  const { data } = await instance.delete(`${BASE_URL}/like/${lectureId}`);
+  return data;
+}

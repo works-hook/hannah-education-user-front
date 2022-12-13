@@ -28,6 +28,7 @@ const TeacherCards = () => {
             <Col className="p-1 mx-3" key={data}>
               <Card className="bg-default shadow border-0 h-100">
                 <CardImg
+                  className="h-60"
                   alt={data.imageUrl}
                   src={data.imageUrl}
                   top

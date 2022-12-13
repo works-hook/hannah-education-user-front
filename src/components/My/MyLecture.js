@@ -198,7 +198,7 @@ const MyLecture = () => {
                     </ListGroup>
                   </TabPane>
                   <TabPane tabId="iconTabs2">
-                    <LikeLectureTable userId={2} />
+                    <LikeLectureTable />
                   </TabPane>
                   <TabPane tabId="iconTabs3">
                     <LectureChart />

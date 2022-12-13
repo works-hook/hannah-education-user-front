@@ -9,6 +9,7 @@ import CreateAccount from "../components/Login/CreateAccount";
 import MyPage from "../components/My/MyPage";
 import MyLecture from "../components/My/MyLecture";
 import MainFooter from "../components/Footers/MainFooter";
+import Logout from "../components/Login/Logout";
 
 const CustomRoute = () => {
 
@@ -35,6 +36,11 @@ const CustomRoute = () => {
           path="/login"
           exact
           render={(props) => <Login {...props} />}
+        />
+        <Route
+          path="/logout"
+          exact
+          render={(props) => <Logout {...props} />}
         />
         <Route
           path="/find-account"

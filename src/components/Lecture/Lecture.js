@@ -8,21 +8,19 @@ import {
 import "../../assets/css/custom.css";
 import '@toast-ui/editor/dist/toastui-editor-viewer.css';
 import {Viewer} from '@toast-ui/react-editor';
-import teacherImg from "../../assets/img/theme/KakaoTalk_20221006_135710459.jpg";
 import {useEffect, useState} from "react";
-import {getLecture, getTeacher} from "../../actions/LecturesActions";
-
-const teacherData = {
-  name: "Hannah",
-  img: teacherImg,
-  lectureCount: 10,
-  studentCount: 310,
-  oneLineIntroduction: "Backend Developer",
-  introduce: ``,
-};
+import {cancelLikeLecture, checkLikedLecture, getLecture, getTeacher, likeLecture} from "../../actions/LecturesActions";
+import {getCookieToken} from "../../token/Cookies";
+import {CheckToken} from "../../token/CheckToken";
+import {useHistory} from "react-router-dom";
 
 const Lecture = (props) => {
-  console.log(props.match.params.lectureId)
+  const lectureId = props.match.params.lectureId;
+
+  const navigate = useHistory();
+
+  const auth = getCookieToken();
+  const checkToken = CheckToken(auth);
 
   const [lecture, setLecture] = useState(null);
   const [teacher, setTeacher] = useState(null);
@@ -31,21 +29,40 @@ const Lecture = (props) => {
 
   useEffect(() => {
     if (!lecture) {
-      const fetchLectureData = async () => getLecture(props.match.params.lectureId);
+      const fetchLectureData = async () => getLecture(lectureId);
       fetchLectureData().then(response => setData(response.data));
 
-      const fetchTeacherData = async () => getTeacher(props.match.params.lectureId);
+      const fetchTeacherData = async () => getTeacher(lectureId);
       fetchTeacherData().then(response => setTeacher(response.data));
+    }
+  }, []);
+
+  useEffect(() => {
+    if (checkToken) {
+      const fetchData = async () => checkLikedLecture(lectureId);
+      fetchData().then(response => setLike(response.data));
     }
   }, []);
 
   const [subscribe, setSubscribe] = useState(false);
   const onSubscribe = () => setSubscribe(!subscribe);
 
-  const [like, setLike] = useState(false);
+  const [like, setLike] = useState(null);
   const onLike = (cancel) => {
+    if (checkToken.isAuth === 'Failed') {
+      alert("로그인 후 이용가능합니다.");
+      return navigate.push('/login');
+    }
     setLike(!like);
-    setLikeCount(cancel ? likeCount - 1 : likeCount + 1);
+    if (cancel) {
+      setLikeCount(likeCount - 1);
+      const fetchData = async () => cancelLikeLecture(lectureId);
+      fetchData().then(response => alert(response.message));
+    } else {
+      setLikeCount(likeCount + 1);
+      const fetchData = async () => likeLecture(lectureId);
+      fetchData().then(response => alert(response.message));
+    }
   }
 
   const setData = (data) => {

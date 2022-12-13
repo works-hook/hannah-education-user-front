@@ -11,8 +11,13 @@ import {
   Nav,
   Container, DropdownToggle,
 } from "reactstrap";
+import {getCookieToken} from "../../token/Cookies";
+import {CheckToken} from "../../token/CheckToken";
 
 const TopNavbar = () => {
+  const auth = getCookieToken();
+  const checkToken = CheckToken(auth);
+
   return (
     <>
       <Navbar
@@ -45,32 +50,36 @@ const TopNavbar = () => {
                   Lecture
                 </NavLink>
               </NavItem>
-              <NavItem>
-                <NavLink href={"/login"}>
-                  <i className="ni ni-send"/>
-                  Login
-                </NavLink>
-              </NavItem>
-              <UncontrolledDropdown nav>
-                <DropdownToggle nav>
-                  <i className="ni ni-collection d-lg-none mr-1" />
-                  <span className="nav-link-inner--text">
+              { checkToken.isAuth === 'Failed' &&
+                <NavItem>
+                  <NavLink href={"/login"}>
+                    <i className="ni ni-send"/>
+                    Login
+                  </NavLink>
+                </NavItem>
+              }
+              { checkToken.isAuth === 'Success' &&
+                <UncontrolledDropdown nav>
+                  <DropdownToggle nav>
+                    <i className="ni ni-collection d-lg-none mr-1"/>
+                    <span className="nav-link-inner--text">
                     <i className="ni ni-circle-08"/>
-                    MyPage
-                  </span>
-                </DropdownToggle>
-                <DropdownMenu>
-                  <DropdownItem to="/my-lecture" tag={Link}>
-                    내 강의
-                  </DropdownItem>
-                  <DropdownItem to="/my-page" tag={Link}>
-                    내 정보 수정
-                  </DropdownItem>
-                  <DropdownItem to="/" tag={Link}>
-                    Logout
-                  </DropdownItem>
-                </DropdownMenu>
-              </UncontrolledDropdown>
+                      MyPage
+                    </span>
+                  </DropdownToggle>
+                  <DropdownMenu>
+                    <DropdownItem to="/my-lecture" tag={Link}>
+                      내 강의
+                    </DropdownItem>
+                    <DropdownItem to="/my-page" tag={Link}>
+                      내 정보 수정
+                    </DropdownItem>
+                    <DropdownItem to="/logout" tag={Link}>
+                      Logout
+                    </DropdownItem>
+                  </DropdownMenu>
+                </UncontrolledDropdown>
+              }
             </Nav>
           </UncontrolledCollapse>
         </Container>

@@ -306,3 +306,7 @@ blockquote {
     font-size: 13px;
     opacity: 0.7;
 }
+
+.h-60 {
+    height: 60%;
+}
