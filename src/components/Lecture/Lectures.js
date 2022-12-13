@@ -4,95 +4,9 @@ import "swiper/css/pagination";
 import "../../assets/css/custom.css";
 import LectureCard from "../Lecture/LectureCard.js";
 import Pagination from "../utils/Pagination.js";
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import {Link, useLocation} from "react-router-dom";
-
-const tags = [
-  {
-    name: "Java",
-    color: "primary",
-  },
-  {
-    name: "Kotlin",
-    color: "warning",
-  },
-  {
-    name: "Spring",
-    color: "primary",
-  },
-  {
-    name: "Spring boot",
-  },
-  {
-    name: "콘텐츠마케팅",
-  },
-  {
-    name: "Figma",
-  },
-  {
-    name: "Effective",
-  },
-  {
-    name: "Backend",
-  },
-  {
-    name: "nestJS",
-  },
-  {
-    name: "node.js",
-  },
-  {
-    name: "MongoDB",
-  },
-  {
-    name: "iOS",
-  },
-  {
-    name: "Swift",
-  },
-  {
-    name: "Kafka",
-  },
-  {
-    name: "데이터 엔지니어링",
-  },
-  {
-    name: "English",
-  },
-  {
-    name: "Git",
-  },
-  {
-    name: "Github",
-  },
-  {
-    name: "React",
-  },
-  {
-    name: "Next.js",
-  },
-  {
-    name: "TypeScript",
-  },
-  {
-    name: "TDD",
-  },
-  {
-    name: "Network",
-  },
-  {
-    name: "디지털 리터러시",
-  },
-  {
-    name: "C#",
-  },
-  {
-    name: "Django",
-  },
-  {
-    name: "Python",
-  },
-];
+import {getSubjects} from "../../actions/MainActions";
 
 const lectureData = [
   {
@@ -124,7 +38,7 @@ const lectureData = [
     img: "https://cdn.inflearn.com/public/courses/327972/cover/0e64ce46-8dfd-4cb8-b6bd-914b87358461/%EC%9D%B8%ED%94%84%EB%9F%B0%20%EB%A9%94%EC%9D%B8.jpg",
     tags: [
       {
-        name: "콘텐츠마케팅",
+        name: "콘텐츠 마케팅",
         color: "info",
       },
       {
@@ -350,7 +264,7 @@ const lectureData = [
     img: "https://cdn.inflearn.com/public/courses/327972/cover/0e64ce46-8dfd-4cb8-b6bd-914b87358461/%EC%9D%B8%ED%94%84%EB%9F%B0%20%EB%A9%94%EC%9D%B8.jpg",
     tags: [
       {
-        name: "콘텐츠마케팅",
+        name: "콘텐츠 마케팅",
         color: "info",
       },
       {
@@ -539,6 +453,14 @@ const lectureData = [
 ];
 
 const Lectures = () => {
+  const [tags, setTags] = useState([]);
+  useEffect(() => {
+    if (tags.length < 1) {
+      const fetchData = async () => getSubjects();
+      fetchData().then(response => setTags(response.data));
+    }
+  })
+
   const [search, setSearch] = useState("");
   const onSearchChange = (e) => setSearch(e.target.value);
 
