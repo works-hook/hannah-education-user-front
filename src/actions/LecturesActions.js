@@ -12,4 +12,18 @@ export const getMostLikeLectures = async() => {
   return data;
 }
 
+export const getLectures = async() => {
+  const { data } = await instance.get(`${BASE_URL}`);
+  return data;
+}
+
+export const getLecture = async(id) => {
+  const { data } = await instance.get(`${BASE_URL}/${id}`);
+  return data;
+}
+
+export const getTeacher = async(id) => {
+  const { data } = await instance.get(`${BASE_URL}/teacher/${id}`);
+  return data;
+}
 
