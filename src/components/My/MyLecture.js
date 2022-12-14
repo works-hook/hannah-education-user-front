@@ -10,98 +10,16 @@ import {
   TabPane,
   CardBody,
   ListGroup,
-  ListGroupItem,
+  ListGroupItem, Alert,
 } from "reactstrap";
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import MyLectureTable from "./MyLectureTable";
 import MyBackground from "../utils/MyBackground";
 import NoticeModal from "./NoticeModal";
 import LectureModal from "./LectureModal";
 import LikeLectureTable from "./LikeLectureTable";
 import LectureChart from "./LectureChart";
-
-const lectureData = [
-  {
-    lectureId: 17,
-    title: "따라하며 배우는 리액트 A-Z",
-    img: "https://cdn.inflearn.com/public/courses/329170/cover/223c54c0-9220-4937-836d-70a36be3eb1c/329170-eng.png",
-    classCount: 10,
-    doneClassCount: 2,
-    startDate: "2022-10-15",
-    endDate: "2022-12-31",
-    notices: [
-      {
-        noticeId: 13,
-        title: "2022/12/25 보강 공지",
-        regDate: "2022-11-02"
-      },
-      {
-        noticeId: 123,
-        title: "2022/10/30 휴강 공지",
-        regDate: "2022-10-27"
-      },
-      {
-        noticeId: 33,
-        title: "안녕하세요 강사 Hannah 입니다",
-        regDate: "2022-10-25"
-      },
-    ],
-    tags: [
-      {
-        name: "React",
-        color: "info",
-      },
-      {
-        name: "Next.js",
-        color: "info",
-      },
-      {
-        name: "TypeScript",
-        color: "primary",
-      },
-      {
-        name: "TDD",
-        color: "success",
-      },
-    ]
-  },
-  {
-    lectureId: 1,
-    title: "Django 프레임워크 제대로 배우기",
-    img: "https://cdn.inflearn.com/public/courses/328671/cover/5ac45f32-1f51-4cdd-9f4a-5f7827ed0a15/328671-eng.png",
-    classCount: 20,
-    doneClassCount: 7,
-    startDate: "2022-09-03",
-    endDate: "2022-12-31",
-    notices: [
-      {
-        noticeId: 13,
-        title: "2022/12/25 보강 공지",
-        regDate: "2022-11-02"
-      },
-      {
-        noticeId: 123,
-        title: "2022/10/30 휴강 공지",
-        regDate: "2022-10-27"
-      },
-      {
-        noticeId: 33,
-        title: "안녕하세요 강사 Hannah 입니다",
-        regDate: "2022-10-25"
-      },
-    ],
-    tags: [
-      {
-        name: "Django",
-        color: "success",
-      },
-      {
-        name: "Python",
-        color: "info",
-      },
-    ]
-  },
-];
+import {getTakingLecture} from "../../actions/ClassActions";
 
 const MyLecture = () => {
   const [state = {
@@ -121,11 +39,23 @@ const MyLecture = () => {
   const [noticeId, setNoticeId]= useState(0);
   const onNoticeId = (id) => setNoticeId(id);
 
+  const [lectureTitle, setLectureTitle] = useState("");
+  const onLectureTitle = (data) => setLectureTitle(data);
+
   const [toggleState, setToggleState] = useState(false);
   const toggleModal = () => setToggleState(!toggleState);
 
   const [lectureToggle, setLectureToggle] = useState(false);
   const lectureModal = () => setLectureToggle(!lectureToggle);
+
+  const [takingLecture, setTakingLecture] = useState([]);
+
+  useEffect(() => {
+    if (takingLecture.length < 1) {
+      const fetchData = async () => getTakingLecture();
+      fetchData().then(response => setTakingLecture(response.data));
+    }
+  }, []);
 
   return <>
     <MyBackground />
@@ -182,20 +112,24 @@ const MyLecture = () => {
               <CardBody>
                 <TabContent activeTab={"iconTabs" + state.iconTabs}>
                   <TabPane tabId="iconTabs1">
-                    <ListGroup>
-                      {lectureData.map((data) => {
-                        return <ListGroupItem key={data.lectureId}>
-                          <MyLectureTable
-                            key={data.lectureId}
-                            data={data}
-                            toggleModal={toggleModal}
-                            lectureModal={lectureModal}
-                            onLectureId={onLectureId}
-                            onNoticeId={onNoticeId}
-                          />
-                        </ListGroupItem>
-                      })}
-                    </ListGroup>
+                    {takingLecture.length < 1 ?
+                      <Alert color="secondary" className="custom-alert">수강 중인 강의가 없습니다!</Alert>
+                      : <ListGroup>
+                        {takingLecture.map((data) => {
+                          return <ListGroupItem key={data.lectureId}>
+                            <MyLectureTable
+                              key={data.lectureId}
+                              data={data}
+                              toggleModal={toggleModal}
+                              lectureModal={lectureModal}
+                              onLectureId={onLectureId}
+                              onNoticeId={onNoticeId}
+                              onLectureTitle={onLectureTitle}
+                            />
+                          </ListGroupItem>
+                        })}
+                      </ListGroup>
+                    }
                   </TabPane>
                   <TabPane tabId="iconTabs2">
                     <LikeLectureTable />
@@ -209,16 +143,21 @@ const MyLecture = () => {
           </Col>
         </Row>
       </Container>
-      <NoticeModal
-        toggleModal={toggleModal}
-        toggleState={toggleState}
-        noticeId={noticeId}
-      />
-      <LectureModal
-        lectureModal={lectureModal}
-        lectureToggle={lectureToggle}
-        lectureId={lectureId}
-      />
+      {toggleState &&
+        <NoticeModal
+          toggleModal={toggleModal}
+          toggleState={toggleState}
+          noticeId={noticeId}
+        />
+      }
+      {lectureToggle &&
+        <LectureModal
+          lectureModal={lectureModal}
+          lectureToggle={lectureToggle}
+          lectureId={lectureId}
+          lectureTitle={lectureTitle}
+        />
+      }
     </section>
   </>;
 }

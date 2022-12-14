@@ -310,3 +310,8 @@ blockquote {
 .h-60 {
     height: 60%;
 }
+
+.custom-alert {
+    color: #172b4d;
+    height: 500px;
+}

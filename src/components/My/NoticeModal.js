@@ -1,13 +1,20 @@
 import {Button, Modal} from "reactstrap";
+import {useEffect, useState} from "react";
+import {Viewer} from "@toast-ui/react-editor";
+import {getNotice} from "../../actions/ClassActions";
 
 const NoticeModal = ({toggleState, toggleModal, noticeId}) => {
-  // api 통신 후 데이터 받아서 내용 뿌려주기
-  // const [id, setId] = useState(noticeId);
-  const noticeData = {
-    title: "2022/10/30 휴강 공지",
-    content: "강사님의 개인적인 사정으로 2022년 10월 30일 강의는 휴강 하겠습니다. 학생들의 많은 양해 부탁드립니다. 감사합니다.",
-    regDate: "2022-10-27"
-  }
+  const [notice, setNotice] = useState(null);
+
+  useEffect(() => {
+    if (!notice) {
+      const fetchData = async () => getNotice(noticeId);
+      fetchData().then(response => {
+        console.log(response)
+        setNotice(response.data)
+      });
+    }
+  }, []);
 
   return <Modal
     className="modal-dialog-centered"
@@ -15,9 +22,11 @@ const NoticeModal = ({toggleState, toggleModal, noticeId}) => {
     toggle={toggleModal}
   >
     <div className="modal-header">
-      <h5 className="modal-title" id="exampleModalLabel">
-        {noticeData.title}
-      </h5>
+      {notice &&
+        <h5 className="modal-title" id="exampleModalLabel">
+          {notice.title}
+        </h5>
+      }
       <button
         aria-label="Close"
         className="close"
@@ -28,10 +37,12 @@ const NoticeModal = ({toggleState, toggleModal, noticeId}) => {
         <span aria-hidden={true}>×</span>
       </button>
     </div>
-    <div className="modal-body custom-font">
-      {noticeData.content}<br/>
-      <small>{noticeData.regDate}</small>
-    </div>
+    {notice &&
+      <div className="modal-body custom-font">
+        <Viewer initialValue={notice.content}/>
+        <small>{notice.createdDate}</small>
+      </div>
+    }
     <div className="modal-footer">
       <Button
         color="primary"

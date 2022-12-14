@@ -46,3 +46,8 @@ export const cancelLikeLecture = async(lectureId) => {
   const { data } = await instance.delete(`${BASE_URL}/like/${lectureId}`);
   return data;
 }
+
+export const takeLecture = async(lectureId) => {
+  const { data } = await instance.post(`${BASE_URL}/take/${lectureId}`);
+  return data;
+}

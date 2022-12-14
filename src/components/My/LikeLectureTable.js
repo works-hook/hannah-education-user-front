@@ -1,5 +1,5 @@
 import LectureCard from "../Lecture/LectureCard";
-import {Button, Row} from "reactstrap";
+import {Alert, Row} from "reactstrap";
 import {Link} from "react-router-dom";
 import {useEffect, useState} from "react";
 import {likedLecture} from "../../actions/LecturesActions";
@@ -22,9 +22,7 @@ const LikeLectureTable = () => {
         </Link>
       })}
       {likeLectures.length < 1 &&
-        <Link to={"/lectures"}>
-          <Button color="success">강의를 둘러보고 좋아요를 클릭해보세요!</Button>
-        </Link>}
+          <Alert color="secondary" className="custom-alert w-90">강의를 둘러보고 좋아요를 클릭해보세요!</Alert>}
     </Row>
   </>;
 }

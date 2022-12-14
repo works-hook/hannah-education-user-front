@@ -9,7 +9,14 @@ import "../../assets/css/custom.css";
 import '@toast-ui/editor/dist/toastui-editor-viewer.css';
 import {Viewer} from '@toast-ui/react-editor';
 import {useEffect, useState} from "react";
-import {cancelLikeLecture, checkLikedLecture, getLecture, getTeacher, likeLecture} from "../../actions/LecturesActions";
+import {
+  cancelLikeLecture,
+  checkLikedLecture,
+  getLecture,
+  getTeacher,
+  likeLecture,
+  takeLecture
+} from "../../actions/LecturesActions";
 import {getCookieToken} from "../../token/Cookies";
 import {CheckToken} from "../../token/CheckToken";
 import {useHistory} from "react-router-dom";
@@ -35,9 +42,6 @@ const Lecture = (props) => {
       const fetchTeacherData = async () => getTeacher(lectureId);
       fetchTeacherData().then(response => setTeacher(response.data));
     }
-  }, []);
-
-  useEffect(() => {
     if (checkToken) {
       const fetchData = async () => checkLikedLecture(lectureId);
       fetchData().then(response => setLike(response.data));
@@ -69,6 +73,15 @@ const Lecture = (props) => {
     setLecture(data);
     setTags(data.tags);
     setLikeCount(data.likeCount);
+  }
+
+  const onTakeLecture = (id) => {
+    if (checkToken.isAuth === 'Failed') {
+      alert("로그인 후 이용가능합니다.");
+      return navigate.push('/login');
+    }
+    const fetchData = async () => takeLecture(id);
+    fetchData().then(response => alert(response.message));
   }
 
   return <>
@@ -142,21 +155,23 @@ const Lecture = (props) => {
             </Row>
             <Row className="justify-content-center">
               <Button color="neutral" size="lg" onClick={onSubscribe}>수강 신청 하기</Button>
-              <Modal
-                className="modal-dialog-centered"
-                isOpen={subscribe}
-                toggle={onSubscribe}
-              >
+              {subscribe && <Modal className="modal-dialog-centered">
                 <div className="modal-body">
                   <p className="text-default">
-                    <br />
+                    <br/>
                     수강 신청을 하시겠습니까?
                   </p>
                 </div>
                 <div className="modal-footer">
-                  <Button color="primary" type="button">
-                    신청하기
-                  </Button>
+                  {subscribe &&
+                    <Button
+                      color="primary"
+                      type="button"
+                      onClick={onTakeLecture(lectureId)}
+                    >
+                      신청하기
+                    </Button>
+                  }
                   <Button
                     className="ml-auto"
                     color="link"
@@ -167,7 +182,7 @@ const Lecture = (props) => {
                     닫기
                   </Button>
                 </div>
-              </Modal>
+              </Modal>}
             </Row>
             <div className="mt-5 py-5 border-top">
               <Row className="justify-content-center mb-3">
