@@ -15,7 +15,7 @@ const LikeLectureTable = () => {
   }, []);
 
   return <>
-    <Row className="mt-3 justify-content-center">
+    <Row className="justify-content-center">
       {likeLectures.map((data) => {
         return <Link key={data.lectureId} to={`/lectures/${data.lectureId}`} className="lectures-link">
           <LectureCard title={data.title} img={data.thumbnailImgUrl} tags={data.tags} className={"mx-2 card-width"}/>

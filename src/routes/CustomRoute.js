@@ -10,12 +10,18 @@ import MyPage from "../components/My/MyPage";
 import MyLecture from "../components/My/MyLecture";
 import MainFooter from "../components/Footers/MainFooter";
 import Logout from "../components/Login/Logout";
+import {getCookieToken} from "../token/Cookies";
+import {useState} from "react";
+import {CheckToken} from "../token/CheckToken";
 
 const CustomRoute = () => {
+  const auth = getCookieToken();
+  const [checkToken, setCheckToken] = useState(CheckToken(auth));
+  console.log(checkToken)
 
   return <>
     <Router>
-      <Navbar />
+      <Navbar checkToken={checkToken} />
       <Switch>
         <Route
           path="/"
@@ -35,12 +41,12 @@ const CustomRoute = () => {
         <Route
           path="/login"
           exact
-          render={(props) => <Login {...props} />}
+          render={(props) => <Login {...props} setCheckToken={setCheckToken} />}
         />
         <Route
           path="/logout"
           exact
-          render={(props) => <Logout {...props} />}
+          render={(props) => <Logout {...props} setCheckToken={setCheckToken} />}
         />
         <Route
           path="/find-account"

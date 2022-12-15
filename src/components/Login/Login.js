@@ -19,7 +19,7 @@ import {loginUser} from "../../actions/UserActions";
 import {setRefreshToken} from "../../token/Cookies";
 import {SET_TOKEN} from "../../token/Auth";
 
-const Login = () => {
+const Login = ({setCheckToken}) => {
   const dispatch = useDispatch();
   const navigate = useHistory();
 
@@ -40,6 +40,7 @@ const Login = () => {
       setRefreshToken(response.data.token)
       dispatch(SET_TOKEN(response.data.token))
 
+      setCheckToken({isAuth: 'Success'})
       return navigate.push("/")
     } else {
       alert(response.message)
@@ -94,9 +95,9 @@ const Login = () => {
                 </div>
                 <Row className="mt-3">
                   <Col xs="6">
-                    <Link to={"/find-account"}>
-                      <small>Forgot Account?</small>
-                    </Link>
+                    {/*<Link to={"/find-account"}>*/}
+                    {/*  <small>Forgot Account?</small>*/}
+                    {/*</Link>*/}
                   </Col>
                   <Col className="text-right" xs="6">
                     <Link to={"/create-account"}>

@@ -11,13 +11,8 @@ import {
   Nav,
   Container, DropdownToggle,
 } from "reactstrap";
-import {getCookieToken} from "../../token/Cookies";
-import {CheckToken} from "../../token/CheckToken";
 
-const TopNavbar = () => {
-  const auth = getCookieToken();
-  const checkToken = CheckToken(auth);
-
+const TopNavbar = ({checkToken}) => {
   return (
     <>
       <Navbar
@@ -50,7 +45,7 @@ const TopNavbar = () => {
                   Lecture
                 </NavLink>
               </NavItem>
-              { checkToken.isAuth === 'Failed' &&
+              { ((checkToken.isAuth === 'Failed') || (checkToken.isAuth === 'Loaded')) &&
                 <NavItem>
                   <NavLink href={"/login"}>
                     <i className="ni ni-send"/>
@@ -58,7 +53,7 @@ const TopNavbar = () => {
                   </NavLink>
                 </NavItem>
               }
-              { checkToken.isAuth === 'Success' &&
+              { (checkToken.isAuth !== 'Failed') && (checkToken.isAuth !== 'Loaded') &&
                 <UncontrolledDropdown nav>
                   <DropdownToggle nav>
                     <i className="ni ni-collection d-lg-none mr-1"/>

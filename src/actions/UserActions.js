@@ -22,3 +22,24 @@ export const updatePassword = async(updateData) => {
     const { data } = await instance.post(`${BASE_URL}/users/password`, updateData);
     return data;
 }
+
+export const checkAccountDuplicate = async(dataToSubmit) => {
+    const { data } = await instance.post(`${BASE_URL}/users/account`, dataToSubmit);
+    return data;
+}
+
+export const certificationSend = async(dataToSubmit) => {
+    const { data } = await instance.post(`${BASE_URL}/user-certification`, dataToSubmit);
+    return data;
+}
+
+export const certificationCheck = async(dataToSubmit) => {
+    const { data } = await instance.post(`${BASE_URL}/user-certification/check`, dataToSubmit);
+    return data;
+}
+
+export const registerUser = async(dataToSubmit) => {
+    const { data } = await instance.post(`${BASE_URL}/users`, dataToSubmit);
+    return data;
+}
+
